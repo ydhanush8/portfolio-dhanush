@@ -7,7 +7,7 @@ const education = [
     institution: "Guru Ghasidas Vishwavidyalaya, A Central University, Bilaspur",
     degree: "B.Tech, Computer Science",
     period: "2020 - 2024",
-    gpa: "CGPA: 8.89/10",
+    gpa: "CGPA: 8.87/10",
     icon: "🎓",
   },
 ]
