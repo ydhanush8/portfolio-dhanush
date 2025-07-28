@@ -9,9 +9,8 @@ const experiences = [
     company: "Mobius by Gaian Solutions",
     period: "Feb 2025 - Present",
     responsibilities: [
-      "Worked on a live project called Cura Care (curacare.in)",
-      "Implemented website analytics to track user interactions using PostHog, Google Analytics, and Facebook Pixel",
-      "Developed dynamic slot management system based on bookings",
+      "Developed the complete project flow in RunRun where users fill and submit detailed forms, which are then displayed as interactive project cards on the dashboard.",
+      "Built user-friendly forms for different deployment sections and integrated workflow APIs to trigger, manage, and track backend automation tasks.",
     ],
     skills: ["Next.js","ReactJs", "JavaScript", "TailwindCSS"],
   },
