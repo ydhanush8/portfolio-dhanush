@@ -31,9 +31,9 @@ const projects = [
     demoUrl: "https://www.npmjs.com/package/react-prompt-palette",
     githubUrl: "https://github.com/ydhanush8/react-prompt-palette",
     features: [
-      "Built a reusable prompt management UI component for creating, organizing, and reusing AI prompts.",
-      "Helped reduce prompt repetition by 60% through intuitive design, local storage, and folder structure.",
-      "Surpassed 1,200 downloads within two weeks, gaining traction among AI and developer communities.",
+      "Built a sidebar-based prompt management component that attaches to text inputs in React apps.",
+      "Reduced prompt repetition by 60% through creation, editing, and reuse with localStorage persistence.",
+      "Reached 500+ downloads within two weeks, gaining traction among AI and developer communities.",
     ],
   },
 ]
