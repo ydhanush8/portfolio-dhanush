@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Download, Mail, MapPin } from "lucide-react"
 import { FaNode } from "react-icons/fa"
-import { RiNextjsFill, RiReactjsFill, RiTailwindCssFill, RiTwitterXLine } from "react-icons/ri"
+import { RiNextjsFill, RiReactjsFill, RiTailwindCssFill, RiNodejsLine  } from "react-icons/ri"
 import { SiMongodb } from "react-icons/si"
 import Link from "next/link"
 
@@ -169,8 +169,8 @@ export default function Hero() {
                   repeat: Infinity
                 }}
               >
-                <div className="text-4xl text-sky-500">
-                  <RiTailwindCssFill />
+                <div className="text-4xl text-green-600">
+                  <RiNodejsLine />
                 </div>
               </motion.div>
             </div>
@@ -188,7 +188,7 @@ export default function Hero() {
                 ease: "easeInOut"
               }}
             >
-              ReactJs
+              React JS
             </motion.div>
 
             <motion.div
@@ -204,7 +204,7 @@ export default function Hero() {
                 delay: 1
               }}
             >
-              Tailwind CSS
+              Node JS
             </motion.div>
 
             <motion.div
@@ -220,7 +220,7 @@ export default function Hero() {
                 delay: 0.5
               }}
             >
-              Next.js
+              Next JS
             </motion.div>
 
             <motion.div

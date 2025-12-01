@@ -9,9 +9,11 @@ const experiences = [
     company: "Mobius by Gaian Solutions",
     period: "Feb 2025 - Present",
     responsibilities: [
-      "Developed end-to-end project flow where users submit detailed forms, displayed as interactive project cards on the dashboard for better visibility and tracking.",
-      "Integrated workflow APIs to automate and track 10+ backend processes, reducing manual effort by 40%.",
-      "Designed core and favourite prompt flows enabling users to interact with agents, execute commands, attach artifacts, and reuse prompts across 20+ workflows, improving overall efficiency."
+      "Built an agentic AI-powered orchestration dashboard that surfaced real-time run telemetry, execution states, logs, & artifacts for 15+ engineering teams, improving operational visibility and decision-making.",
+      "Integrated workflow and run-orchestration APIs to automate 10+ backend processes, reducing manual DevOps interventions by almost 40% and improving deployment reliability.",
+      "Contributed to the agent-execution lifecycle, run scheduling, state transitions, logs, artifacts, and observability, improving reliability and governance for production-grade agentic AI workloads.",
+      "Designed agentic AI workflows enabling users to visually orchestrate autonomous agents, tools, and prompts through reusable modules.",
+      "Implemented reusable prompt + artifact attachment flows across 20+ agent workflows, enabling modular agent behavior and reducing user iteration time"
     ],
     skills: ["Next.js","ReactJs", "JavaScript", "TailwindCSS"],
   },
@@ -20,8 +22,8 @@ const experiences = [
     company: "HealthOFin. ",
     period: "Nov 2024 – Jan 2025",
     responsibilities: [
-      "Collaborated on a platform connecting farmers with IT-sector investors, implementing onboarding, investment tracking, and admin control for seamless role-based interaction",
-      "Contributed to 10+ secure APIs enabling user verification, farm listings, document uploads, and transparent investment workflows across 3 user roles.",
+      "Built a farmer–investor platform with secure REST APIs and RBAC-driven onboarding, ensuring authenticated and policy-controlled access across user roles.",
+      "Developed dashboards and multi-tenant admin controls supporting Farmers, Investors, and Platform Admins with least-privilege access boundaries",
       "Developed interactive dashboards and reporting features, allowing farmers and investors to track investments, portfolio performance, and status."
     ],
     skills: ["React", "Node", "Express", "MongoDB", "Responsive Design"],

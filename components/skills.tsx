@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { FaBootstrap, FaCss3, FaGitAlt, FaGithub, FaHtml5, FaJs, FaReact, FaPython } from "react-icons/fa";
+import { BiLogoTypescript } from "react-icons/bi";
 import { SiMongodb, SiMysql } from "react-icons/si";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { VscVscode } from "react-icons/vsc";
@@ -12,6 +13,7 @@ const skillCategories = [
     title: "Front End",
     skills: [
       { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+      { name: "TypeScript", icon: <BiLogoTypescript className="text-blue-400" /> },
       { name: "Python", icon: <FaPython className="text-blue-400" /> },
       { name: "React.js", icon: <FaReact className="text-blue-500" /> },
       { name: "Next.js", icon: <RiNextjsFill className="text-black dark:text-white" /> },

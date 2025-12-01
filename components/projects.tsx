@@ -9,6 +9,20 @@ import Link from "next/link"
 
 const projects = [
   {
+    title: "MemoMind",
+    description:
+      "MemoMind is an AI-powered learning platform that converts raw notes into smart study material, personalised summaries, quizzes, and spaced-revision workflows for faster retention.",
+    image: "/memomind.png",
+    tags: ["Next.js", "Clerk", "Razorpay", "Tailwind CSS", "OpenRouter API", "MongoDB"],
+    demoUrl: "https://memomind-navy.vercel.app/",
+    githubUrl: "https://github.com/ydhanush8/MemoMind",
+    features: [
+      "Built an AI-powered learning platform that converts notes into summaries and quizzes for retention.",
+      "Designed AI insights to highlight knowledge gaps and recommend personalized revision paths for each user.",
+      " Developed a premium subscription system with gated AI features, enabling monetization of the platform."
+    ],
+  },
+  {
     title: "Yuno",
     description:
       "Yuno is an AI-powered career platform that helps users prepare for interviews through tailored, role-specific quizzes. It delivers personalized insights and question sets based on industry trends and user roles.",
