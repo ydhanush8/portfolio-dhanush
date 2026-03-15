@@ -13,13 +13,27 @@ const projects = [
     description:
       "MemoMind is an AI-powered learning platform that converts raw notes into smart study material, personalised summaries, quizzes, and spaced-revision workflows for faster retention.",
     image: "/memomind.png",
-    tags: ["Next.js", "Clerk", "Razorpay", "Tailwind CSS", "OpenRouter API", "MongoDB"],
+    tags: ["Next.js", "TypeScript", "Razorpay", "OpenRouter API", "MongoDB"],
     demoUrl: "https://memomind-navy.vercel.app/",
     githubUrl: "https://github.com/ydhanush8/MemoMind",
     features: [
-      "Built an AI-powered learning platform that converts notes into summaries and quizzes for retention.",
-      "Designed AI insights to highlight knowledge gaps and recommend personalized revision paths for each user.",
-      " Developed a premium subscription system with gated AI features, enabling monetization of the platform."
+      "Built an AI powered learning platform that analyzes user-written explanations using LLMs to identify knowledge gaps and suggest improvements.",
+      "Implemented an active recall + spaced repetition system that converts notes into flashcards for daily memory reinforcement.",
+      "Designed scalable Next.js API pipelines integrating OpenRouter models to return structured AI feedback including accuracy scores and improvement suggestions."
+    ],
+  },
+  {
+    title: "FlowPay",
+    description:
+      "FlowPay is a full-stack agreement and payment settlement system enabling users to create contracts and track financial obligations through a centralized ledger.",
+    image: "/flowpay.png",
+    tags: ["Next.js", "Node.js", "Express", "PostgreSQL", "Prisma", "Clerk", "Razorpay"],
+    demoUrl: "https://flow-pay-check.vercel.app/",
+    githubUrl: "https://github.com/ydhanush8/FlowPay",
+    features: [
+      "Developed a full-stack agreement and payment settlement system enabling users to create contracts and track financial obligations through a centralized ledger.",
+      "Implemented a Lazy User Sync mechanism to synchronize Clerk authentication users with the local PostgreSQL database without relying on webhooks.",
+      "Designed a relational payment architecture using Prisma and PostgreSQL to manage agreements, participants, and settlement records."
     ],
   },
   {
