@@ -82,7 +82,7 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          Technologies and tools I've worked with throughout my projects and experience
+          Technologies and tools I&apos;ve worked with throughout my projects and experience
         </motion.p>
 
         <motion.div 

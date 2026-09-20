@@ -9,16 +9,31 @@ import Loading from "@/components/loading"
 
 const inter = Inter({ subsets: ["latin"] })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-dhanush.vercel.app"
+
+const title = "Y Dhanush - Software Developer"
+const description = "Portfolio of Y Dhanush Sai Reddy, a software engineer in Hyderabad building web apps with React, Next.js and Node."
+
 export const metadata: Metadata = {
-  title: "Y Dhanush - Software Developer",
-  description: "Portfolio website of Y Dhanush, a Software Developer",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: title,
+    title,
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
   icons: {
-    icon: [
-      { url: '/dhanushlogo.png', sizes: 'any', type: 'image/x-icon' },
-      { url: '/dhanushlogo.png', sizes: '16x16', type: 'image/png' },
-      { url: '/dhanushlogo.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: '/dhanushlogo.png',
+    icon: "/dhanushlogo.png",
+    apple: "/dhanushlogo.png",
   },
 }
 

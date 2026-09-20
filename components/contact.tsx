@@ -1,78 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Linkedin, CheckCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
-import { useToast } from "@/components/ui/use-toast"
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const { toast } = useToast()
-
-  const handleChange = (e: { target: { id: any; value: any } }) => {
-    const { id, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [id]: value
-    }))
-  }
-
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setIsSuccess(false)
-
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setIsSuccess(true)
-        toast({
-          title: "Success!",
-          description: (
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              {"Your message has been sent successfully. I'll get back to you soon!"}
-            </div>
-          ),
-        })
-        setFormData({
-          name: '',
-          email: '',
-          message: ''
-        })
-      } else {
-        throw new Error(data.message || 'Failed to send message')
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to send message",
-        variant: "destructive",
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <section id="contact" className="py-10">
       <motion.div
