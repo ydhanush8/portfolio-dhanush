@@ -3,9 +3,9 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Download, Mail, MapPin } from "lucide-react"
-import { FaNode } from "react-icons/fa"
-import { RiNextjsFill, RiReactjsFill, RiTailwindCssFill, RiNodejsLine  } from "react-icons/ri"
-import { SiMongodb } from "react-icons/si"
+import { FaGolang } from "react-icons/fa6"
+import { RiNextjsFill } from "react-icons/ri"
+import { SiKubernetes, SiPostgresql } from "react-icons/si"
 import Link from "next/link"
 
 export default function Hero() {
@@ -35,9 +35,8 @@ export default function Hero() {
           </div>
 
           <p className="text-muted-foreground text-sm sm:text-base">
-            A goal-oriented software developer with experience in building web applications using modern technologies
-            like React, Next.js, and more. Seeking to leverage my technical skills to deliver exceptional user
-            experiences.
+            Software engineer building cloud infrastructure automation with Go, Kubernetes and Crossplane, and
+            AI-powered products with Next.js, Node.js and PostgreSQL.
           </p>
 
           <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -100,7 +99,7 @@ export default function Hero() {
 
             {/* Grid with floating tech stacks */}
             <div className="absolute inset-0 grid grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-4">
-              {/* Top Left - React Logo */}
+              {/* Top Left - Kubernetes */}
               <motion.div
                 className="bg-muted rounded-lg p-2 sm:p-4 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
@@ -113,13 +112,13 @@ export default function Hero() {
                     repeat: Infinity,
                     ease: "linear"
                   }}
-                  className="text-4xl text-[#087ea4]"
+                  className="text-4xl text-[#326CE5]"
                 >
-                  <RiReactjsFill />
+                  <SiKubernetes />
                 </motion.div>
               </motion.div>
 
-              {/* Top Right - Node.js */}
+              {/* Top Right - Go */}
               <motion.div
                 className="bg-muted rounded-lg p-2 sm:p-4 flex items-center justify-center"
                 initial={{ y: -20 }}
@@ -131,8 +130,8 @@ export default function Hero() {
                   ease: "easeInOut"
                 }}
               >
-                <div className="text-4xl">
-                  <RiNextjsFill />
+                <div className="text-5xl text-[#00ADD8]">
+                  <FaGolang />
                 </div>
               </motion.div>
 
@@ -148,9 +147,9 @@ export default function Hero() {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="text-4xl text-green-600"
+                  className="text-4xl text-black dark:text-white"
                 >
-                  <SiMongodb />
+                  <RiNextjsFill />
                 </motion.div>
               </motion.div>
 
@@ -169,8 +168,8 @@ export default function Hero() {
                   repeat: Infinity
                 }}
               >
-                <div className="text-4xl text-green-600">
-                  <RiNodejsLine />
+                <div className="text-4xl text-[#336791] dark:text-[#5B9BD5]">
+                  <SiPostgresql />
                 </div>
               </motion.div>
             </div>
@@ -188,7 +187,7 @@ export default function Hero() {
                 ease: "easeInOut"
               }}
             >
-              React JS
+              Kubernetes
             </motion.div>
 
             <motion.div
@@ -204,7 +203,7 @@ export default function Hero() {
                 delay: 1
               }}
             >
-              Node JS
+              PostgreSQL
             </motion.div>
 
             <motion.div
@@ -220,7 +219,7 @@ export default function Hero() {
                 delay: 0.5
               }}
             >
-              Next JS
+              Go
             </motion.div>
 
             <motion.div
@@ -236,7 +235,7 @@ export default function Hero() {
                 delay: 1.5
               }}
             >
-              MongoDB
+              Next.js
             </motion.div>
           </div>
         </motion.div>

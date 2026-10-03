@@ -9,31 +9,30 @@ import Link from "next/link"
 
 const projects = [
   {
-    title: "MemoMind",
+    title: "Atlas",
     description:
-      "MemoMind is an AI-powered learning platform that converts raw notes into smart study material, personalised summaries, quizzes, and spaced-revision workflows for faster retention.",
-    image: "/memomind.png",
-    tags: ["Next.js", "TypeScript", "Razorpay", "OpenRouter API", "MongoDB"],
-    demoUrl: "https://memomind-navy.vercel.app/",
-    githubUrl: "https://github.com/ydhanush8/MemoMind",
+      "Atlas is an AI-powered RAG knowledge platform that turns team documents and websites into a private knowledge base, so people can chat with their content and get answers with citations.",
+    image: "/atlas.png",
+    tags: ["Next.js", "Node.js", "PostgreSQL", "pgvector", "Prisma", "Clerk", "OpenRouter", "Redis", "BullMQ"],
+    demoUrl: "https://atlas-web-beta-one.vercel.app/",
     features: [
-      "Built an AI powered learning platform that analyzes user-written explanations using LLMs to identify knowledge gaps and suggest improvements.",
-      "Implemented an active recall + spaced repetition system that converts notes into flashcards for daily memory reinforcement.",
-      "Designed scalable Next.js API pipelines integrating OpenRouter models to return structured AI feedback including accuracy scores and improvement suggestions."
+      "Built an AI-powered RAG knowledge platform that transforms team documents and websites into a private knowledge base, enabling users to chat with their content and receive cited answers.",
+      "Developed a retrieval pipeline that parses, chunks, and embeds content into 1024-dimensional vectors using Jina Embeddings, indexes them in pgvector (HNSW), and streams cited responses through OpenRouter LLMs.",
+      "Implemented multi-tenant organizations and workspaces with 5-level role-based access, Clerk authentication, BullMQ/Redis background processing for document indexing, and Backblaze B2 storage.",
     ],
   },
   {
-    title: "FlowPay",
+    title: "MemoMind",
     description:
-      "FlowPay is a full-stack agreement and payment settlement system enabling users to create contracts and track financial obligations through a centralized ledger.",
-    image: "/flowpay.png",
-    tags: ["Next.js", "Node.js", "Express", "PostgreSQL", "Prisma", "Clerk", "Razorpay"],
-    demoUrl: "https://flow-pay-check.vercel.app/",
-    githubUrl: "https://github.com/ydhanush8/FlowPay",
+      "MemoMind is an AI-powered learning platform that lets users capture notes, get AI-generated feedback, and reinforce learning through active recall and spaced repetition.",
+    image: "/memomind.png",
+    tags: ["Next.js", "Node.js", "MongoDB", "OpenRouter API", "Razorpay", "Clerk"],
+    demoUrl: "https://memomind-navy.vercel.app/",
+    githubUrl: "https://github.com/ydhanush8/MemoMind",
     features: [
-      "Developed a full-stack agreement and payment settlement system enabling users to create contracts and track financial obligations through a centralized ledger.",
-      "Implemented a Lazy User Sync mechanism to synchronize Clerk authentication users with the local PostgreSQL database without relying on webhooks.",
-      "Designed a relational payment architecture using Prisma and PostgreSQL to manage agreements, participants, and settlement records."
+      "Built an AI-powered learning platform that enables users to capture notes, receive AI-generated feedback, and reinforce learning through active recall and spaced repetition.",
+      "Developed an intelligent learning workflow that analyzes user-written explanations using OpenRouter LLMs, identifies knowledge gaps, generates structured feedback, and creates personalized practice sessions.",
+      "Integrated Clerk authentication, Razorpay subscriptions, Web Push Notifications, and GitHub Actions for automated daily learning reminders.",
     ],
   },
   {
@@ -46,8 +45,8 @@ const projects = [
     githubUrl: "https://github.com/ydhanush8/YUNO",
     features: [
       "Designed an AI-powered platform for tailored quiz-based interview preparation across 50+ industries.",
-      "mplemented dynamic role-specific question generation with real-time insights from market trends.",
-      "Achieved 80% quiz completion rate by optimizing question relevance, pacing, and overall user experience."
+      "Implemented dynamic role-specific question generation with real-time insights from market trends.",
+      "Achieved 80% quiz completion rate by optimizing question relevance, pacing, and overall user experience.",
     ],
   },
   {
@@ -55,7 +54,7 @@ const projects = [
     description:
       "A React + TypeScript library for saving, selecting, and managing AI prompt templates with localStorage support and styled Tailwind UI components, ideal for AI chat interfaces.",
     image: "/react-prompt-palette.png",
-    tags: ["React.js", "Tailwind CSS", "TailwindCSS"],
+    tags: ["React.js", "TypeScript", "Tailwind CSS"],
     demoUrl: "https://www.npmjs.com/package/react-prompt-palette",
     githubUrl: "https://github.com/ydhanush8/react-prompt-palette",
     features: [

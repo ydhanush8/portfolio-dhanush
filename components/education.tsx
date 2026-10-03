@@ -4,8 +4,8 @@ import { motion } from "framer-motion"
 
 const education = [
   {
-    institution: "Guru Ghasidas Vishwavidyalaya, A Central University, Bilaspur",
-    degree: "B.Tech, Computer Science",
+    institution: "Guru Ghasidas Vishwavidyalaya (Central University), Bilaspur",
+    degree: "B.Tech in Computer Science and Engineering",
     period: "2020 - 2024",
     gpa: "CGPA: 8.87/10",
     icon: "🎓",

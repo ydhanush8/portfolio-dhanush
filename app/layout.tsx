@@ -1,11 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next/types"
-import { Inter } from "next/font/google"
+import { IBM_Plex_Sans } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { siteUrl } from "@/lib/site"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const plex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"] })
 
 
 const title = "Y Dhanush - Software Developer"
@@ -43,7 +43,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* Extensions (ColorZilla, Grammarly, ...) inject attributes on <body>
           before React hydrates, which trips the hydration check. */}
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={plex.className} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
