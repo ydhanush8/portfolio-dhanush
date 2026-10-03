@@ -14,8 +14,8 @@ export default function OgImage() {
         flexDirection: "column",
         justifyContent: "center",
         padding: "80px",
-        background: "#0D1719",
-        color: "#ECEFEA",
+        background: "#F5F0E8",
+        color: "#1A1714",
       }}
     >
       <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.12, letterSpacing: "-0.03em" }}>
@@ -24,10 +24,10 @@ export default function OgImage() {
       <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.12, letterSpacing: "-0.03em" }}>
         you actually want
       </div>
-      <div style={{ fontSize: 28, marginTop: 40, color: "#8FA09B" }}>
+      <div style={{ fontSize: 28, marginTop: 40, color: "#5E5850" }}>
         Built one business at a time
       </div>
-      <div style={{ width: 120, height: 5, marginTop: 44, background: "#B08D3F" }} />
+      <div style={{ width: 120, height: 5, marginTop: 44, background: "#B98B33" }} />
     </div>,
     size,
   )

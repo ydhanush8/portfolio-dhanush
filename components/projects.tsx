@@ -53,7 +53,7 @@ const projects = [
   {
     title: "react-prompt-palette (NPM Package)",
     description:
-      "A React + TypeScript library for saving, selecting, and managing AI prompt templates with localStorage support and styled Tailwind UI components — ideal for AI chat interfaces.",
+      "A React + TypeScript library for saving, selecting, and managing AI prompt templates with localStorage support and styled Tailwind UI components, ideal for AI chat interfaces.",
     image: "/react-prompt-palette.png",
     tags: ["React.js", "Tailwind CSS", "TailwindCSS"],
     demoUrl: "https://www.npmjs.com/package/react-prompt-palette",

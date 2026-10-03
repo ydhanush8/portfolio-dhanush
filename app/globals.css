@@ -123,7 +123,162 @@
   }
 }
 
-/* Soft light behind the hero composition. */
-.glow {
-  background: radial-gradient(60% 55% at 70% 35%, rgba(176, 141, 63, 0.16), transparent 70%);
+
+/* Device switcher: fills the active tab while it waits to move on. */
+@keyframes tab-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.tab-progress {
+  animation: tab-progress linear forwards;
+}
+
+
+
+/* ---- /freelance motion. Everything here is decorative: reduced motion and
+   browsers without scroll timelines simply see the finished state. ---- */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes swing-in {
+  from {
+    opacity: 0;
+    transform: rotate(-12deg) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-3deg);
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-12deg);
+  }
+  75% {
+    transform: rotate(12deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .draw-on-load path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.7s forwards;
+  }
+  .word {
+    display: inline-block;
+    animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .wiggle-icon:hover svg {
+    animation: wiggle 0.5s ease-in-out;
+  }
+  .polaroid {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+  }
+  .polaroid:hover {
+    transform: rotate(0deg) translateY(-6px) !important;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .draw-on-view path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: draw linear forwards;
+      animation-timeline: view();
+      animation-range: entry 20% cover 40%;
+    }
+    .line-on-view {
+      transform-origin: left;
+      animation: grow-x linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    .stagger > * {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+    .stagger > *:nth-child(2) {
+      animation-range: entry 8% entry 90%;
+    }
+    .stagger > *:nth-child(3) {
+      animation-range: entry 16% entry 100%;
+    }
+    .stagger > *:nth-child(4) {
+      animation-range: entry 24% cover 30%;
+    }
+    .polaroid-in {
+      animation: swing-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+  }
+}
+
+/* FAQ answers slide open instead of snapping (supporting browsers only). */
+.faq {
+  interpolate-size: allow-keywords;
+}
+.faq details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.35s ease, content-visibility 0.35s allow-discrete;
+}
+.faq details[open]::details-content {
+  block-size: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq details::details-content {
+    transition: none;
+  }
+}
+
+/* Scroll-scrubbed effects on /freelance: tied to scroll position, so they
+   play forward going down and reverse going up. */
+@keyframes hero-out {
+  to {
+    transform: translateY(-70px) scale(0.92);
+    opacity: 0.15;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-out {
+      animation: hero-out linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 # portfolio-dhanush
 
-Personal portfolio site — [Y Dhanush Sai Reddy](https://www.linkedin.com/in/dhanushsr8/), software engineer in Hyderabad.
+Personal portfolio site of [Y Dhanush Sai Reddy](https://www.linkedin.com/in/dhanushsr8/), software engineer in Hyderabad.
 
 Built with Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui and framer-motion. Deployed on Vercel.
 
@@ -30,4 +30,4 @@ Open http://localhost:3000.
 
 ## Editing content
 
-Each section is a component in `components/`. The copy is inline — edit the component, there is no CMS.
+Each section is a component in `components/`. The copy is inline: edit the component, there is no CMS.
