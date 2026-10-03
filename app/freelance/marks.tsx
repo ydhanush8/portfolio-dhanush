@@ -16,9 +16,8 @@ export function Circled({ children }: { children: ReactNode }) {
           d="M40 22c60-18 170-20 222 6 34 18 30 58-8 74-60 24-170 22-218-2C-2 82 6 40 52 22c20-8 50-12 76-12"
           fill="none"
           stroke="#B98B33"
-          strokeWidth="5"
+          strokeWidth="4.5"
           strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
         />
       </svg>
     </span>
