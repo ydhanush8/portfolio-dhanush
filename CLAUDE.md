@@ -33,7 +33,7 @@ Two pages on one domain, each with its own layout, split with route groups (URLs
 
 - `next build` runs lint and typecheck for real. There are no `ignoreBuildErrors` escapes. Keep it that way.
 - Never edit `package.json` dependencies without running `npm install` afterwards. Vercel builds with `npm ci`, which hard-fails when `package-lock.json` is out of sync.
-- Set `NEXT_PUBLIC_SITE_URL` in the Vercel project to the real domain. Metadata, `robots.ts` and `sitemap.ts` all fall back to a guessed URL otherwise.
+- `NEXT_PUBLIC_SITE_URL` is required in production (read in `lib/site.ts`, no fallback). A build without it fails on purpose. Set it in Vercel before deploying.
 - The contact section is links only, by design. There is no form and no `/api/send-email` route.
 - Apostrophes in JSX text must be `&apos;`: `react/no-unescaped-entities` fails the build.
 - The dev server often stops recompiling Tailwind after edits on this machine (likely the Linux inotify watcher limit). If new classes do not show up, restart it with `rm -rf .next && npm run dev`.

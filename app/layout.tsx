@@ -3,10 +3,10 @@ import type { Metadata } from "next/types"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { siteUrl } from "@/lib/site"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-dhanush.vercel.app"
 
 const title = "Y Dhanush - Software Developer"
 const description = "Portfolio of Y Dhanush Sai Reddy, a software engineer in Hyderabad building web apps with React, Next.js and Node."

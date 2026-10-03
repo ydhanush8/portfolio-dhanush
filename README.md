@@ -17,7 +17,7 @@ Open http://localhost:3000.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL. Used for metadata, `robots.txt` and `sitemap.xml`. Falls back to the Vercel preview URL. |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL. Used for metadata, `robots.txt` and `sitemap.xml`. **Required:** a production build fails without it. Local dev uses localhost. |
 
 ## Structure
 
