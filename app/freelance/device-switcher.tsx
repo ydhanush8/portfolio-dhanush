@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import type { ClientSite } from "@/lib/freelance"
@@ -31,10 +31,27 @@ export default function DeviceSwitcher({ sites }: { sites: ClientSite[] }) {
   }, [cycling, sites.length])
 
   const site = sites[active]
+  const stage = useRef<HTMLDivElement>(null)
+
+  // Mouse only: the devices lean a few degrees toward the cursor.
+  const tilt = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || reducedMotion || !stage.current) return
+    const r = e.currentTarget.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width - 0.5
+    const y = (e.clientY - r.top) / r.height - 0.5
+    stage.current.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 5}deg)`
+  }
+  const untilt = () => {
+    if (stage.current) stage.current.style.transform = ""
+  }
 
   return (
     <div onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
-      <div className="relative mx-auto max-w-[1040px] pb-[6%]">
+      <div className="[perspective:1600px]" onPointerMove={tilt} onPointerLeave={untilt}>
+      <div
+        ref={stage}
+        className="relative mx-auto max-w-[1040px] pb-[6%] transition-transform duration-500 ease-out [transform-style:preserve-3d]"
+      >
         {/* Laptop */}
         <div className="mx-auto w-[86%]">
           <div className="rounded-t-[18px] bg-[#1E1B18] p-[1.4%] shadow-[0_50px_100px_-20px_rgba(17,19,21,0.45)] ring-1 ring-black/10">
@@ -75,6 +92,8 @@ export default function DeviceSwitcher({ sites }: { sites: ClientSite[] }) {
             </div>
           </div>
         </div>
+      </div>
+
       </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-2" aria-label="Client sites">

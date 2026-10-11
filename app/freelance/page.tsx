@@ -1,9 +1,13 @@
 import type { Metadata } from "next/types"
+import { Fragment } from "react"
 import Link from "next/link"
 import { clientSites, WHATSAPP_URL, CONTACT_EMAIL } from "@/lib/freelance"
 import DeviceSwitcher from "./device-switcher"
 import Avatar from "./avatar"
 import Reviews from "./reviews"
+import FloatingWhatsApp from "./floating-whatsapp"
+import Products from "./products"
+import Magnetic from "./magnetic"
 import { Circled, Note } from "./marks"
 
 export const metadata: Metadata = {
@@ -66,7 +70,7 @@ const faqs = [
 
 const serif = "font-[family-name:var(--font-serif)]"
 const hand = "font-[family-name:var(--font-hand)]"
-const sectionTitle = `${serif} text-[clamp(2.6rem,5.4vw,4.75rem)] leading-[0.98] tracking-[-0.015em]`
+const sectionTitle = `mask-up ${serif} text-[clamp(2.6rem,5.4vw,4.75rem)] leading-[0.98] tracking-[-0.015em]`
 const inkButton =
   "inline-flex items-center gap-2.5 rounded-full bg-[#1A1714] px-7 font-medium text-[#F5F0E8] transition-all hover:-translate-y-0.5 hover:bg-[#35302A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1A1714]"
 const underlineLink =
@@ -80,6 +84,25 @@ function WhatsAppIcon() {
   )
 }
 
+/** Headline split into letters, each carrying its index for the stagger and the light. */
+type HeadWord = { text: string; start: number; circled?: boolean }
+const headline: HeadWord[] = (() => {
+  let i = 0
+  return ["Get", "a", "website", "you", "actually", "want"].map((text) => {
+    const w = { text, start: i, circled: text === "actually" }
+    i += text.length
+    return w
+  })
+})()
+
+function letters(w: HeadWord) {
+  return w.text.split("").map((c, k) => (
+    <span key={k} className="ltr" style={{ "--ci": w.start + k } as React.CSSProperties}>
+      {c}
+    </span>
+  ))
+}
+
 export default function Freelance() {
   return (
     <main>
@@ -89,20 +112,22 @@ export default function Freelance() {
           <Avatar size={52} className="rounded-full ring-2 ring-[#FFFDF8]" />
           <span className={`${hand} text-[28px] leading-none text-[#1A1714]`}>Hi, I&apos;m Dhanush</span>
         </div>
-        <h1 className={`mt-7 max-w-[15ch] ${serif} text-[clamp(3.6rem,9vw,8.5rem)] leading-[0.92] tracking-[-0.02em]`}>
-          {["Get", "a", "website", "you"].map((w, i) => (
-            <span key={w} className="word" style={{ animationDelay: `${0.15 + i * 0.08}s` }}>
-              {w}&nbsp;
-            </span>
-          ))}
-          <span className="word" style={{ animationDelay: "0.47s" }}>
-            <Circled>
-              <em>actually</em>
-            </Circled>
-            &nbsp;
-          </span>
-          <span className="word" style={{ animationDelay: "0.55s" }}>
-            want
+        <h1 className={`sweep mt-7 max-w-[15ch] ${serif} text-[clamp(3.6rem,9vw,8.5rem)] leading-[0.92] tracking-[-0.02em]`}>
+          <span className="sr-only">Get a website you actually want</span>
+          <span aria-hidden="true">
+            {headline.map((w) =>
+              w.circled ? (
+                <Fragment key={w.text}>
+                  <Circled>
+                    <em className="whitespace-nowrap">{letters(w)}</em>
+                  </Circled>{" "}
+                </Fragment>
+              ) : (
+                <Fragment key={w.text}>
+                  <span className="inline-block whitespace-nowrap">{letters(w)}</span>{" "}
+                </Fragment>
+              ),
+            )}
           </span>
         </h1>
         <div className="reveal reveal-3 mt-9 flex flex-wrap items-end justify-between gap-8">
@@ -111,10 +136,12 @@ export default function Freelance() {
             I take care of the design, the domain and the hosting.
           </p>
           <div className="flex flex-wrap items-center gap-6">
-            <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`${inkButton} wiggle-icon min-h-[52px]`}>
+            <Magnetic>
+            <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-cta className={`${inkButton} wiggle-icon min-h-[52px]`}>
               <WhatsAppIcon />
               Message me on WhatsApp
             </Link>
+            </Magnetic>
             <Link href="#work" className={underlineLink}>
               See the work
             </Link>
@@ -134,8 +161,11 @@ export default function Freelance() {
         <Reviews reviews={reviews} />
       </section>
 
+      <Products />
+
       {/* What you get */}
       <section className="rise mx-auto max-w-[1200px] px-5 pt-32 sm:px-8">
+        <span aria-hidden="true" className="line-on-view mb-14 block h-px bg-[#B98B33]/50" />
         <div className="flex flex-wrap gap-x-16 gap-y-10">
           <div className="flex-[1_1_300px]">
             <h2 className={sectionTitle}>What you get</h2>
@@ -171,6 +201,7 @@ export default function Freelance() {
 
       {/* About */}
       <section id="about" className="rise mx-auto max-w-[1200px] scroll-mt-8 px-5 pt-32 sm:px-8">
+        <span aria-hidden="true" className="line-on-view mb-14 block h-px bg-[#B98B33]/50" />
         <div className="flex flex-wrap items-center gap-x-20 gap-y-12">
           <div className="polaroid polaroid-in mx-auto flex-none -rotate-3 rounded-2xl bg-[#FFFDF8] p-5 pb-6 shadow-[0_30px_60px_-30px_rgba(40,30,15,0.5)] ring-1 ring-[#1A1714]/10">
             <Avatar size={240} className="rounded-xl" />
@@ -190,6 +221,7 @@ export default function Freelance() {
 
       {/* FAQ */}
       <section id="faq" className="rise mx-auto max-w-[1200px] scroll-mt-8 px-5 pt-32 sm:px-8">
+        <span aria-hidden="true" className="line-on-view mb-14 block h-px bg-[#B98B33]/50" />
         <div className="flex flex-wrap gap-x-16 gap-y-10">
           <h2 className={`${sectionTitle} flex-[1_1_300px]`}>Questions people ask</h2>
           <div className="faq min-w-0 flex-[2_1_520px] divide-y divide-[#1A1714]/10 border-y border-[#1A1714]/10">
@@ -217,15 +249,17 @@ export default function Freelance() {
             Let&apos;s make your website
           </h2>
           <div className="mt-10 flex flex-wrap items-center gap-6">
+            <Magnetic>
             <Link
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="wiggle-icon inline-flex min-h-14 items-center gap-2.5 rounded-full bg-[#F5F0E8] px-8 text-[17px] font-medium text-[#1A1714] transition-all hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5F0E8]"
+              data-cta className="wiggle-icon inline-flex min-h-14 items-center gap-2.5 rounded-full bg-[#F5F0E8] px-8 text-[17px] font-medium text-[#1A1714] transition-all hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5F0E8]"
             >
               <WhatsAppIcon />
               Message me on WhatsApp
             </Link>
+            </Magnetic>
             <Link href={`mailto:${CONTACT_EMAIL}`} className="border-b border-[#D9B46A] pb-0.5 text-[15px] text-[#E9E2D6] transition-colors hover:text-white">
               or email {CONTACT_EMAIL}
             </Link>
@@ -233,16 +267,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      {/* Same pattern as the client sites: the action never scrolls away on a phone. */}
-      <Link
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#1A1714] px-5 text-sm font-medium text-[#F5F0E8] shadow-lg shadow-black/30 ring-1 ring-[#F5F0E8]/25 sm:hidden"
-      >
-        <WhatsAppIcon />
-        WhatsApp
-      </Link>
+      <FloatingWhatsApp />
     </main>
   )
 }

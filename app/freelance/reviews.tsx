@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion"
 type Review = { quote: string; who: string }
 
 const INTERVAL_MS = 5500
+const SWIPE_PX = 60
 // Fixed tilts for the cards waiting behind the active one.
 const TILTS = [-7, 6, -4, 8, -6]
 
@@ -37,7 +38,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
       {/* text + controls */}
       <div>
         <p className="font-[family-name:var(--font-hand)] text-[28px] leading-none text-[#7A5718]">what clients say</p>
-        <h2 className="mt-3 max-w-[14ch] font-[family-name:var(--font-serif)] text-[clamp(2.6rem,5.4vw,4.75rem)] leading-[0.98] tracking-[-0.015em]">
+        <h2 className="mask-up mt-3 max-w-[14ch] font-[family-name:var(--font-serif)] text-[clamp(2.6rem,5.4vw,4.75rem)] leading-[0.98] tracking-[-0.015em]">
           More enquiries, real results
         </h2>
         <div className="mt-10 flex items-center gap-4">
@@ -72,7 +73,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
         </p>
       </div>
       {/* deck */}
-      <div className="relative h-[300px] w-[calc(100%-32px)] max-w-[460px] sm:h-[320px] md:mx-auto">
+      <div className="relative isolate h-[300px] w-[calc(100%-32px)] max-w-[460px] touch-pan-y sm:h-[320px] md:mx-auto">
         {reviews.map((r, i) => {
           const isActive = i === active
           const depth = (i - active + reviews.length) % reviews.length
@@ -81,6 +82,13 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
               key={r.quote}
               aria-hidden={!isActive}
               initial={false}
+              drag={isActive ? "x" : false}
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.6}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -SWIPE_PX || info.velocity.x < -400) go(1)
+                else if (info.offset.x > SWIPE_PX || info.velocity.x > 400) go(-1)
+              }}
               animate={{
                 rotate: isActive ? 0 : TILTS[i % TILTS.length],
                 scale: isActive ? 1 : 0.94,
@@ -90,7 +98,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
                 zIndex: isActive ? 40 : 30 - depth,
               }}
               transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 210, damping: 24 }}
-              className="absolute inset-0 flex flex-col rounded-3xl bg-[#FFFDF8] p-8 [&[aria-hidden=true]]:bg-[#F1EADF] shadow-[0_30px_60px_-30px_rgba(40,30,15,0.5)] ring-1 ring-[#1A1714]/[0.07] sm:p-10"
+              className="absolute inset-0 flex cursor-grab select-none flex-col rounded-3xl bg-[#FFFDF8] p-8 active:cursor-grabbing [&[aria-hidden=true]]:bg-[#F1EADF] shadow-[0_30px_60px_-30px_rgba(40,30,15,0.5)] ring-1 ring-[#1A1714]/[0.07] sm:p-10"
             >
               <span aria-hidden="true" className="-mb-8 -mt-6 block font-[family-name:var(--font-serif)] text-[110px] leading-none text-[#B98B33]">
                 &ldquo;

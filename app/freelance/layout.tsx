@@ -2,10 +2,15 @@ import type React from "react"
 import Link from "next/link"
 import { Caveat, Hanken_Grotesk, Instrument_Serif } from "next/font/google"
 import { CONTACT_EMAIL, WHATSAPP_URL } from "@/lib/freelance"
+import OpeningCover from "./opening-cover"
 
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif" })
 const hand = Caveat({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-hand" })
 const body = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-body" })
+
+// Runs before first paint. The cover only shows when JavaScript is running; if
+// the cover script never arrives, the watchdog drops it so no one is stuck.
+const coverBoot = `(function(){var r=document.documentElement;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('js','cover-on');setTimeout(function(){if(!window.__cover){r.classList.remove('js','cover-on')}},7000)})()`
 
 /**
  * The freelance page is its own thing: a warm, personal studio page aimed at
@@ -18,8 +23,10 @@ export default function FreelanceLayout({
 }>) {
   return (
     <div
-      className={`${serif.variable} ${hand.variable} ${body.variable} min-h-screen overflow-x-clip bg-[#F5F0E8] font-[family-name:var(--font-body)] text-[17px] leading-relaxed text-[#1A1714] selection:bg-[#1A1714] selection:text-[#F5F0E8]`}
+      className={`${serif.variable} ${hand.variable} ${body.variable} paper min-h-screen overflow-x-clip bg-[#F5F0E8] font-[family-name:var(--font-body)] text-[17px] leading-relaxed text-[#1A1714] selection:bg-[#1A1714] selection:text-[#F5F0E8]`}
     >
+      <script dangerouslySetInnerHTML={{ __html: coverBoot }} />
+      <OpeningCover />
       <div id="top" className="bg-[#1A1714] px-5 py-2.5 text-center text-sm text-[#E9E2D6]">
         Taking on new website projects.{" "}
         <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-[#B98B33] underline-offset-4 hover:text-white">
@@ -27,7 +34,8 @@ export default function FreelanceLayout({
         </Link>
       </div>
 
-      <header className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-5 px-5 py-6 sm:px-8">
+      <header className="sticky top-0 z-50 px-3 pt-2 sm:px-5">
+        <div className="pill-header mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-5 px-3 py-4 sm:px-5">
         <Link href="/freelance" className="font-[family-name:var(--font-serif)] text-[28px] leading-none">
           Dhanush<span className="text-[#B98B33]">.</span>
         </Link>
@@ -53,6 +61,7 @@ export default function FreelanceLayout({
             Let&apos;s talk
           </Link>
         </nav>
+        </div>
       </header>
 
       {children}
