@@ -37,5 +37,6 @@ Two pages on one domain, each with its own layout, split with route groups (URLs
 - The contact section is links only, by design. There is no form and no `/api/send-email` route.
 - Apostrophes in JSX text must be `&apos;`: `react/no-unescaped-entities` fails the build.
 - The dev server often stops recompiling Tailwind after edits on this machine (likely the Linux inotify watcher limit). If new classes do not show up, restart it with `rm -rf .next && npm run dev`.
+- Vercel installs with pnpm (`pnpm-lock.yaml` exists), not npm. A local `npm run build` on existing `node_modules` does not prove a deploy will pass. Before calling a build good, check a clean copy: `git archive HEAD | tar -x -C <dir>`, then `pnpm install --frozen-lockfile` and `pnpm run build`. `pnpm-workspace.yaml` must hold real `true`/`false` values under `allowBuilds`; placeholder text fails the install on newer pnpm.
 - To check a production build while a dev server runs, use `NEXT_DIST_DIR=.next-verify npm run build`, so it does not overwrite the dev server's `.next`.
 - `/freelance` copy rules: no client numbers or locations, no business-type lists, no prices, no em dashes. Reviews only say what clients actually said.
